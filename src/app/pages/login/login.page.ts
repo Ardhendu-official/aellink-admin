@@ -6,7 +6,7 @@ import { LoadingService } from 'src/app/services/loading.service'
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { Storage } from '@ionic/storage-angular';
-import { AuthenticationService } from 'src/app/services/Authentication.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AlertsToastsService } from 'src/app/services/alerts-toasts.service';
 
 @Component({
