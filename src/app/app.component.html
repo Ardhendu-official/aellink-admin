@@ -1,0 +1,39 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>Tivonivo</ion-list-header>
+          <ion-note>admin@tivonivo.com</ion-note>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" ios="home-outline" md="home-outline"></ion-icon>
+              <ion-label>Home</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root"  routerLink="/user" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" ios="layers-outline" md="layers-outline"></ion-icon>
+              <ion-label>User</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <!-- <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root"  lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" ios="cube-outline" md="cube-outline"></ion-icon>
+              <ion-label>Producr</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+          <!-- <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" ios="document-outline" md="document-outline"></ion-icon>
+              <ion-label>Add Offer Latter</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+        </ion-list>
+        <ion-button (click)="logout()" expand="block" shape="round">Logout</ion-button>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

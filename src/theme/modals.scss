@@ -1,0 +1,47 @@
+@media (min-width: 1080px){
+  .add__deperment {
+    --width: 60%;
+    --height: 45%;
+    --overflow: auto;
+    --border-radius: 20px;
+  
+    .modal-wrapper {
+      margin: 12px;
+    }
+  }
+
+  .add__designation{
+    --width: 50%;
+    --height: 45%;
+    --overflow: auto;
+    --border-radius: 20px;
+  
+    .modal-wrapper {
+      margin: 12px;
+    }
+  }
+}
+
+@media (min-width: 767px)and (max-width: 1080px){
+  .add__deperment {
+    --width: 60%;
+    --height: 35%;
+    --overflow: auto;
+    --border-radius: 20px;
+  
+    .modal-wrapper {
+      margin: 12px;
+    }
+  }
+
+  .add__designation{
+    --width: 70%;
+    --height: 45%;
+    --overflow: auto;
+    --border-radius: 20px;
+  
+    .modal-wrapper {
+      margin: 12px;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "OfferLatter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar class="ion-padding">
+    <ion-title>All Category</ion-title>
+    <ion-button mode="ios" (click)="addcategory()" slot="end">
+      <ion-icon mode="ios" name="add"></ion-icon>
+      Add Category
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <mat-tab-group (selectedTabChange)="segmentChanged($event)" [selectedIndex]="0" animationDuration="1000ms" *ngIf="parent_cats">
+      <mat-tab *ngFor="let parent_cat of parent_cats" [label]="parent_cat?.category_name">
+        <div class="ion-padding">
+          <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput autocomplete="off" (keyup)="applyFilter($event)" placeholder="Ex. Dals" #input>
+          </mat-form-field>
+          
+          <div *ngIf="dataSource" class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+          
+              <!-- ID Column -->
+              <ng-container matColumnDef="category_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.category_id}} </td>
+              </ng-container>
+              
+              <!-- Image Column -->
+              <ng-container matColumnDef="category_image">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                <td class="ion-nowrap" style="padding: 0px!important;" md-cell *matCellDef="let row" >
+                  <img height="70px" width="70px" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=50,metadata=none,w=305,h=333/layout-engine/2021-11/baby-care.png" alt="">
+                </td>
+              </ng-container> 
+  
+              <!-- Name Column -->
+              <ng-container matColumnDef="category_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.category_name}} </td>
+              </ng-container>
+  
+              <!-- Status Column -->
+              <ng-container matColumnDef="category_status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let row"><ion-icon *ngIf="row.category_status=='active'" color="success" style="font-size: 32px;" name="checkmark-circle"></ion-icon></td>
+              </ng-container>
+          
+              <!-- Description Column -->
+              <ng-container matColumnDef="category_description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                <td mat-cell *matCellDef="let row"> {{row.category_description}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                  <td class="ion-nowrap" style="padding: 0px!important;" md-cell *matCellDef="let row" >
+                    <ion-buttons>
+                      <ion-button mode="ios"  color="primary" md-raised-button ><ion-icon name="create-outline"></ion-icon></ion-button>
+                      <ion-button mode="ios" color="danger" md-raised-button ><ion-icon name="trash-outline"></ion-icon></ion-button>
+                    </ion-buttons>
+                  </td>
+              </ng-container> 
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell ion-text-center" colspan="4">No data matching the filter "{{input.value}}"</td>
+              </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ion-content>
+
+
