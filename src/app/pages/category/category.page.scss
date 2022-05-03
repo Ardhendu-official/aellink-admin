@@ -13,6 +13,10 @@ td, th {
     font-size: 16px;
 }
 
+td.mat-cell{
+    border-bottom-width: 0px!important;
+    border-bottom-style: none!important;
+}
 
 
 // //input outline color

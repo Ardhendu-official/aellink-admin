@@ -36,7 +36,18 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
+    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule),
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'transactions',
+    loadChildren: () => import('./pages/transactions/transactions.module').then( m => m.TransactionsPageModule),
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'wallet',
+    loadChildren: () => import('./pages/wallet/wallet.module').then( m => m.WalletPageModule),
+    canActivate: [AuthGuardService]
   }
 ];
 

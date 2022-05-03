@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPageRoutingModule } from './user-routing.module';
+import { TransactionsPageRoutingModule } from './transactions-routing.module';
 
-import { UserPage } from './user.page';
-
+import { TransactionsPage } from './transactions.page';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -20,7 +19,7 @@ import { MatTableModule } from '@angular/material/table'
     CommonModule,
     FormsModule,
     IonicModule,
-    UserPageRoutingModule,
+    TransactionsPageRoutingModule,
     MatCardModule,
     MatTabsModule,
     MatFormFieldModule,
@@ -28,6 +27,6 @@ import { MatTableModule } from '@angular/material/table'
     MatTableModule,
     MatInputModule
   ],
-  declarations: [UserPage]
+  declarations: [TransactionsPage]
 })
-export class UserPageModule {}
+export class TransactionsPageModule {}

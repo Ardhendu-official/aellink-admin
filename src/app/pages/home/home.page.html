@@ -3,124 +3,60 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-title slot="start">Hi, Welcome back</ion-title>
+    <ion-title slot="end">Account Balence: {{ 16576534.75 | currency:'INR':'symbol-narrow':'3.2-2'}}/-</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <highcharts-chart
-    [Highcharts]="Highcharts"
-    [constructorType]="chartConstructor"
-    [options]="chartOptions"
-    [callbackFunction]="chartCallback"
-    [(update)]="updateFlag"
-    [oneToOne]="oneToOneFlag"
-    [runOutsideAngular]="runOutsideAngularFlag"
-    style="width: 100%; height: 400px; display: block"
-  ></highcharts-chart>
-
-  <ion-grid class="ion-no-padding">
-    <ion-row class="ion-padding">
-      <ion-col size="3">
-        <mat-card fxFlex="25">
-          <div class="text">
-            <h4>{{ "New Users" }}</h4>
-    
-            <span class="total">{{ '12k' }}</span>
-    
-            <span>
-              <mat-icon color="primary">trending_up</mat-icon>
-            </span>
-    
-            <span class="description"> {{ '50' }}% </span>
-    
-            <span> of target</span>
-          </div>
-          <div class="widget">
-            <highcharts-chart
-              [Highcharts]="Highcharts"
-              [options]="cardChartOptions"
-              style="width: 100%; height: 60px; display: block"
-            >
-            </highcharts-chart>
-          </div>
-        </mat-card>
-      </ion-col>
-      <ion-col size="3">
-        <mat-card fxFlex="25">
-          <div class="text">
-            <h4>{{ "Users retention" }}</h4>
-    
-            <span class="total">{{ '10k' }}</span>
-    
-            <span>
-              <mat-icon color="primary">trending_up</mat-icon>
-            </span>
-    
-            <span class="description"> {{ '40' }}% </span>
-    
-            <span> of target</span>
-          </div>
-          <div class="widget">
-            <highcharts-chart
-              [Highcharts]="Highcharts"
-              [options]="cardChartOptions"
-              style="width: 100%; height: 60px; display: block"
-            >
-            </highcharts-chart>
-          </div>
-        </mat-card>
-      </ion-col>
-      <ion-col size="3">
-        <mat-card fxFlex="25">
-          <div class="text">
-            <h4>{{ "Users engagement" }}</h4>
-    
-            <span class="total">{{ '8k' }}</span>
-    
-            <span>
-              <mat-icon color="primary">trending_up</mat-icon>
-            </span>
-    
-            <span class="description"> {{ '30' }}% </span>
-    
-            <span> of target</span>
-          </div>
-          <div class="widget">
-            <highcharts-chart
-              [Highcharts]="Highcharts"
-              [options]="cardChartOptions"
-              style="width: 100%; height: 60px; display: block"
-            >
-            </highcharts-chart>
-          </div>
-        </mat-card>
-      </ion-col>
-      <ion-col size="3">
-        <mat-card fxFlex="25">
-          <div class="text">
-            <h4>{{ "Referral" }}</h4>
-    
-            <span class="total">{{ '6k' }}</span>
-    
-            <span>
-              <mat-icon color="primary">trending_up</mat-icon>
-            </span>
-    
-            <span class="description"> {{ '20' }}% </span>
-    
-            <span> of target</span>
-          </div>
-          <div class="widget">
-            <highcharts-chart
-              [Highcharts]="Highcharts"
-              [options]="cardChartOptions"
-              style="width: 100%; height: 60px; display: block"
-            >
-            </highcharts-chart>
-          </div>
-        </mat-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <ion-card style="background: linear-gradient(to bottom right, #abe1b1, #a0c5a3);" class="card">
+            <ion-avatar style="background: linear-gradient(to bottom right, #ace0b2, #7dbe83);" class="avater">
+              <ion-icon style="color: #569d5d;" class="icon" name="people-outline"></ion-icon>
+            </ion-avatar>
+            <div class="dashboard_tile_col_card_label_1">
+              {{71400 | shortNumber}}
+            </div>
+            <div class="dashboard_tile_col_card_label_2">Users</div>
+          </ion-card>
+        </ion-col>
+        <ion-col size="3">
+          <ion-card style="background: linear-gradient(to bottom right, #abb8e1, #a0a1c5);" class="card">
+            <ion-avatar style="background: linear-gradient(to bottom right, #acb7e0, #7d89be);" class="avater">
+              <ion-icon  style="color: #56639d;" class="icon" name="receipt-outline"></ion-icon>
+            </ion-avatar>
+            <div class="dashboard_tile_col_card_label_1">
+              {{1324556 | shortNumber}}
+            </div>
+            <div class="dashboard_tile_col_card_label_2">Transaction</div>
+          </ion-card>
+        </ion-col>
+        <ion-col size="3">
+          <ion-card style="background: linear-gradient(to bottom right, #e1deab, #c5c4a0);" class="card">
+            <ion-avatar style="background: linear-gradient(to bottom right, #e0dbac, #bebb7d);" class="avater">
+              <ion-icon style="color: #9c9d56;" class="icon" name="reader-outline"></ion-icon>
+            </ion-avatar>
+            <div class="dashboard_tile_col_card_label_1">
+              {{9640 | shortNumber}}
+            </div>
+            <div class="dashboard_tile_col_card_label_2">Weekly Transaction</div>
+          </ion-card>
+        </ion-col>
+        <ion-col size="3">
+          <ion-card style="background: linear-gradient(to bottom right, #e1abb8, #c5a0ae);" class="card">
+            <ion-avatar style="background: linear-gradient(to bottom right, #e0acbf, #be7d95);" class="avater">
+              <ion-icon style="color: #9d5675;" class="icon" name="cash-outline"></ion-icon>
+            </ion-avatar>
+            <div class="dashboard_tile_col_card_label_1">
+              {{5924556 | shortNumber }}
+            </div>
+            <div class="dashboard_tile_col_card_label_2">Total Balence</div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

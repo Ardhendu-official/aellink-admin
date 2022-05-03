@@ -73,9 +73,10 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.loading.presentLoading()
     
     if(this.loginForm.valid){
+      this.loading.presentLoading()
+
       var data = {
         'email': this.loginForm.value.email,
         'password': this.loginForm.value.password
@@ -91,18 +92,20 @@ export class LoginPage implements OnInit {
       .subscribe(async (res) => {
         const response:any =res;
         if(response.Status == 'Success'){
-          await this.storage.set('savefulladmin', data);
+          await this.storage.set('walletappadmin', data);
           this.authService.login(data);
           this.alertsToasts.signupSuccessToast(response.details,'success');
         }
         else if(response.Status == 'Failed'){
-          await this.storage.set('savefulladmin', data);
+          await this.storage.set('walletappadmin', data);
           this.alertsToasts.signupSuccessToast(response.details,'danger');
         }
       },(reserror)=>{
         console.log(reserror.error.detail);
         this.alertsToasts.signupSuccessToast(reserror.error.detail,'danger');
       })
+    } else {
+      this.alertsToasts.signupSuccessToast('Empty Input Can\'t Accepted','danger');
     }
   }
 }

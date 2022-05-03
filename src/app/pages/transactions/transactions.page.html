@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>All Transactions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <div class="ion-padding">
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          autocomplete="off"
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. UserName"
+          #input
+        />
+      </mat-form-field>
+
+      <div *ngIf="dataSource" class="mat-elevation-z0">
+        <table mat-table [dataSource]="dataSource">
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_id}}</td>
+          </ng-container>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_ammount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_ammount | currency:'INR':'symbol-narrow':'3.2-2'}}</td>
+          </ng-container>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_before_wallet_ammount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Opening Balence</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_before_wallet_ammount | currency:'INR':'symbol-narrow':'3.2-2'}}</td>
+          </ng-container>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_after_wallet_ammount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Closing Balence</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_after_wallet_ammount | currency:'INR':'symbol-narrow':'3.2-2'}}</td>
+          </ng-container>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_status}}</td>
+          </ng-container>
+
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_datetime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date/Time</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_datetime | date:'EEEE, MMMM d, y, h:mm:ss a'}}</td>
+          </ng-container>
+
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_send_account">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ben Account Number</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_send_account}}</td>
+          </ng-container>
+
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_send_ifsc">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ben IFSC</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_send_ifsc}}</td>
+          </ng-container>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="trans_send_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ben Name</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_send_name}}</td>
+          </ng-container>
+
+           <!-- ID Column -->
+           <ng-container matColumnDef="trans_send_bank_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ben Bank</th>
+            <td mat-cell *matCellDef="let row">{{row.trans_send_bank_name}}</td>
+          </ng-container>
+
+
+          <!-- Image Column -->
+          <ng-container matColumnDef="photo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+            <td
+              class="ion-nowrap"
+              style="padding: 0px !important"
+              md-cell
+              *matCellDef="let row"
+            >
+            <ion-avatar>
+              <img src="{{row.user.photo}}" />
+            </ion-avatar>
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row">{{row.user.name}}</td>
+          </ng-container>
+
+          <!-- Description Column -->
+          <ng-container matColumnDef="userid">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>UserId</th>
+            <td mat-cell *matCellDef="let row">{{row.user.userid}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td
+              class="ion-nowrap"
+              style="padding: 0px !important"
+              md-cell
+              *matCellDef="let row"
+            >
+              <ion-buttons>
+                <ion-button mode="ios" color="primary" md-raised-button
+                  ><ion-icon name="open-outline" style="font-size: 32px"></ion-icon
+                ></ion-button>
+                <!-- <ion-button mode="ios" color="danger" md-raised-button
+                  ><ion-icon name="trash-outline" style="font-size: 32px"></ion-icon
+                ></ion-button> -->
+              </ion-buttons>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell ion-text-center" colspan="4">
+              No data matching the filter "{{input.value}}"
+            </td>
+          </tr>
+        </table>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+</ion-content>

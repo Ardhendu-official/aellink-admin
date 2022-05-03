@@ -67,3 +67,10 @@
 ion-content{
   --background: #fff;
 }
+
+@media (max-width: 800px)
+{
+  body{
+    display: none;
+  }
+}

@@ -7,13 +7,25 @@ import { IonicModule } from '@ionic/angular';
 import { AddproductPageRoutingModule } from './addproduct-routing.module';
 
 import { AddproductPage } from './addproduct.page';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddproductPageRoutingModule
+    AddproductPageRoutingModule,
+    MatCardModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatInputModule
   ],
   declarations: [AddproductPage]
 })

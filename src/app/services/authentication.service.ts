@@ -31,7 +31,7 @@ export class AuthenticationService {
    }
 
   async ifLoggedIn() {
-    await this.storage.get('savefulladmin').then((response) => {
+    await this.storage.get('walletappadmin').then((response) => {
       if(response != null){
         this.validate(response.email, response.password);
       }
@@ -42,7 +42,7 @@ export class AuthenticationService {
   }
 
   async login(userdata) {
-    await this.storage.set('savefulladmin', userdata).then((response) => {
+    await this.storage.set('walletappadmin', userdata).then((response) => {
       console.log(JSON.stringify(response));
       this.authState.next(true);
       this.navCtrl.navigateRoot(['home']);
@@ -51,7 +51,7 @@ export class AuthenticationService {
   }
 
   async logout() {
-    await this.storage.remove('savefulladmin').then(() => {
+    await this.storage.remove('walletappadmin').then(() => {
       this.authState.next(false);
       this.navCtrl.navigateRoot(['login']);
     });
@@ -75,7 +75,7 @@ export class AuthenticationService {
       await this.loading.dismissLoading();
       if (response.Status === 'Success') {
         this.authState.next(true);
-        await this.storage.set('savefulladmin', data);
+        await this.storage.set('walletappadmin', data);
       }
       else if (response.Status === 'Failed') {
         this.authState.next(false);

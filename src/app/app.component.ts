@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
   async initializeApp() {
-    this.adminInfo = await this.storage.get('savefulladmin');
+    this.adminInfo = await this.storage.get('walletappadmin');
     this.authenticationService.authState.subscribe(state => {
       console.log(state);
       if (state) {

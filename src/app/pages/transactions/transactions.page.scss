@@ -10,7 +10,7 @@ table {
 td,
 th {
   width: auto;
-  padding: 20px !important;
+  padding: 10px !important;
   font-size: 16px;
   // text-align: center!important;
 }
@@ -21,18 +21,6 @@ td.mat-cell {
 }
 
 ion-avatar { 
-    width: 90px;  
-    height: 90px;  
-}
-
-.header{
-    font-size: 22px;
-    font-weight: 600;
-    min-height: 20px;
-    color: black;
-}
-
-.note{
-    font-size: 16px;
-    color: var(--ion-color-medium-shade);
+    width: 40px;  
+    height: 40px;  
 }
