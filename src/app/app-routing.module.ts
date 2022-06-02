@@ -30,25 +30,10 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule),
+    path: 'recipe',
+    loadChildren: () => import('./recipe/recipe.module').then( m => m.RecipePageModule),
     canActivate: [AuthGuardService]
   },
-  {
-    path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule),
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'transactions',
-    loadChildren: () => import('./pages/transactions/transactions.module').then( m => m.TransactionsPageModule),
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'wallet',
-    loadChildren: () => import('./pages/wallet/wallet.module').then( m => m.WalletPageModule),
-    canActivate: [AuthGuardService]
-  }
 ];
 
 @NgModule({

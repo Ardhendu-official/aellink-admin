@@ -28,9 +28,8 @@ export class AppComponent {
   }
 
   async initializeApp() {
-    this.adminInfo = await this.storage.get('walletappadmin');
+    this.adminInfo = await this.storage.get('user');
     this.authenticationService.authState.subscribe(state => {
-      console.log(state);
       if (state) {
         this.router.navigate(['/home']);
       } else {

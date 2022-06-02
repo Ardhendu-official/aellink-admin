@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{rcp?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]=recipe?.Recipe.rcp_image_url />
+    <ion-card-header>
+      <ion-card-subtitle>{{recipe?.Recipe.rcp_name}}</ion-card-subtitle>
+      <ion-card-title>{{recipe?.Recipe.created_by}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{recipe?.Recipe.rcp_desc}}
+    </ion-card-content>
+    <ion-card-content>
+      <ion-card-subtitle>Ingrideants</ion-card-subtitle>
+      <ion-badge style="padding: 7px; margin: 3px;" class="ion-text-capitalize" *ngFor="let ing of recipe?.Ingrideants" color="primary">{{ing?.ing_items}} ({{ing?.ing_amount}} {{ing?.ing_unit}})</ion-badge>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-card-subtitle>Process</ion-card-subtitle>
+      <ion-badge style="padding: 5px; margin: 3px;" class="ion-text-capitalize" *ngFor="let pro of recipe?.Process" color="primary">{{pro?.prc_step}}</ion-badge>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

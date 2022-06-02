@@ -1,62 +1,28 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()" color="danger"><ion-icon name="power"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title slot="start">Hi, Welcome back</ion-title>
-    <ion-title slot="end">Account Balence: {{ 16576534.75 | currency:'INR':'symbol-narrow':'3.2-2'}}/-</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="3">
-          <ion-card style="background: linear-gradient(to bottom right, #abe1b1, #a0c5a3);" class="card">
-            <ion-avatar style="background: linear-gradient(to bottom right, #ace0b2, #7dbe83);" class="avater">
-              <ion-icon style="color: #569d5d;" class="icon" name="people-outline"></ion-icon>
-            </ion-avatar>
-            <div class="dashboard_tile_col_card_label_1">
-              {{71400 | shortNumber}}
-            </div>
-            <div class="dashboard_tile_col_card_label_2">Users</div>
-          </ion-card>
-        </ion-col>
-        <ion-col size="3">
-          <ion-card style="background: linear-gradient(to bottom right, #abb8e1, #a0a1c5);" class="card">
-            <ion-avatar style="background: linear-gradient(to bottom right, #acb7e0, #7d89be);" class="avater">
-              <ion-icon  style="color: #56639d;" class="icon" name="receipt-outline"></ion-icon>
-            </ion-avatar>
-            <div class="dashboard_tile_col_card_label_1">
-              {{1324556 | shortNumber}}
-            </div>
-            <div class="dashboard_tile_col_card_label_2">Transaction</div>
-          </ion-card>
-        </ion-col>
-        <ion-col size="3">
-          <ion-card style="background: linear-gradient(to bottom right, #e1deab, #c5c4a0);" class="card">
-            <ion-avatar style="background: linear-gradient(to bottom right, #e0dbac, #bebb7d);" class="avater">
-              <ion-icon style="color: #9c9d56;" class="icon" name="reader-outline"></ion-icon>
-            </ion-avatar>
-            <div class="dashboard_tile_col_card_label_1">
-              {{9640 | shortNumber}}
-            </div>
-            <div class="dashboard_tile_col_card_label_2">Weekly Transaction</div>
-          </ion-card>
-        </ion-col>
-        <ion-col size="3">
-          <ion-card style="background: linear-gradient(to bottom right, #e1abb8, #c5a0ae);" class="card">
-            <ion-avatar style="background: linear-gradient(to bottom right, #e0acbf, #be7d95);" class="avater">
-              <ion-icon style="color: #9d5675;" class="icon" name="cash-outline"></ion-icon>
-            </ion-avatar>
-            <div class="dashboard_tile_col_card_label_1">
-              {{5924556 | shortNumber }}
-            </div>
-            <div class="dashboard_tile_col_card_label_2">Total Balence</div>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+
+  <ion-list>
+    <!-- <ion-list-header> Recent Conversations </ion-list-header> -->
+    <ion-item (click)="viewRecipe(recipe.rcp_id, recipe.rcp_name)" *ngFor="let recipe of recipes" lines="none">
+        <ion-avatar slot="start">
+          <img [src]=recipe?.rcp_image_url />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{recipe?.rcp_name}} ({{recipe?.user_name}})</h2>
+          <p>{{recipe?.rcp_desc}}</p>
+        </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

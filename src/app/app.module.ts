@@ -10,13 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicStorageModule } from '@ionic/storage-angular';
-import { AddcategoryPage } from 'src/app/modals/addcategory/addcategory.page'
-import { AddproductPage } from 'src/app/modals/addproduct/addproduct.page'
 import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
-  declarations: [AppComponent, AddcategoryPage, AddproductPage],
-  entryComponents: [AddcategoryPage, AddproductPage],
+  declarations: [AppComponent],
+  entryComponents: [],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 

@@ -31,9 +31,9 @@ export class AuthenticationService {
    }
 
   async ifLoggedIn() {
-    await this.storage.get('walletappadmin').then((response) => {
+    await this.storage.get('user').then((response) => {
       if(response != null){
-        this.validate(response.email, response.password);
+        this.validate(response.username, response.password);
       }
       else{
         this.authState.next(false);
@@ -42,7 +42,7 @@ export class AuthenticationService {
   }
 
   async login(userdata) {
-    await this.storage.set('walletappadmin', userdata).then((response) => {
+    await this.storage.set('user', userdata).then((response) => {
       console.log(JSON.stringify(response));
       this.authState.next(true);
       this.navCtrl.navigateRoot(['home']);
@@ -51,33 +51,39 @@ export class AuthenticationService {
   }
 
   async logout() {
-    await this.storage.remove('walletappadmin').then(() => {
+    await this.storage.remove('user').then(() => {
+      this.authState.next(false);
+      this.navCtrl.navigateRoot(['login']);
+    });
+    await this.storage.remove('access_token').then(() => {
       this.authState.next(false);
       this.navCtrl.navigateRoot(['login']);
     });
   }
 
-  async validate(email, pass){
-    await this.loading.presentLoading();
+  async validate(username, pass){
     var data = {
-      'email': email,
+      'username': username,
       'password': pass
     }
     var httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json;'
+        'Content-Type':  'application/x-www-form-urlencoded'
       })
     };
-    this.http.post(`${this.apiservice.api_url}login/`,data, httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
+
+    let body = new URLSearchParams();
+    body.set('username', data.username);
+    body.set('password', data.password);
+
+    this.http.post(`${this.apiservice.api_url}login/`,body, httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
     .subscribe(async res => {
       const response: any = res;
-      // console.log(JSON.stringify(response));
-      await this.loading.dismissLoading();
-      if (response.Status === 'Success') {
+      if (response.access_token) {
         this.authState.next(true);
-        await this.storage.set('walletappadmin', data);
+        await this.storage.set('user', data);
       }
-      else if (response.Status === 'Failed') {
+      else {
         this.authState.next(false);
       }
     });

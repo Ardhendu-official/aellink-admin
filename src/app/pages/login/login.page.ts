@@ -20,7 +20,6 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
 
   constructor(
-    public menuCtrl: MenuController,
     public apiservices : ApiServices,
     public loading: LoadingService,
     private fb: FormBuilder,
@@ -32,24 +31,11 @@ export class LoginPage implements OnInit {
    }
 
   ngOnInit() {
-    this.menuCtrl.enable(false);
     this.loginForm = this.fb.group({
       // tslint:disable-next-line: max-line-length
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]],
+      username: ['', [Validators.required, Validators.minLength(2)]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
-  }
-
-  ionViewWillEnter(){
-    this.menuCtrl.enable(false);
-  }
-
-  ngOnDestroy() {
-    this.menuCtrl.enable(true);
-  }
-
-  ionViewWillLeave() {
-    this.menuCtrl.enable(true);
   }
 
   validateAllFormFields(formGroup: FormGroup) {
@@ -73,31 +59,32 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    
     if(this.loginForm.valid){
       this.loading.presentLoading()
 
-      var data = {
-        'email': this.loginForm.value.email,
+      let data = {
+        'username': this.loginForm.value.username,
         'password': this.loginForm.value.password
       }
 
-      var httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json; charset=UTF-8'
-        })
+      let body = new URLSearchParams();
+      body.set('username', data.username);
+      body.set('password', data.password);
+
+      let httpOptions = {
+        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
       };
-      console.log(data);
-      this.http.post(`${this.apiservices.api_url}login/`,data,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
+      this.http.post(`${this.apiservices.api_url}login/`,body,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
       .subscribe(async (res) => {
         const response:any =res;
-        if(response.Status == 'Success'){
-          await this.storage.set('walletappadmin', data);
+        if(response.access_token){
+          await this.storage.set('user', data);
+          await this.storage.set('access_token', response?.access_token);
           this.authService.login(data);
-          this.alertsToasts.signupSuccessToast(response.details,'success');
+          this.alertsToasts.signupSuccessToast('Login Successfully','success');
         }
         else if(response.Status == 'Failed'){
-          await this.storage.set('walletappadmin', data);
+          await this.storage.set('user', data);
           this.alertsToasts.signupSuccessToast(response.details,'danger');
         }
       },(reserror)=>{

@@ -4,12 +4,12 @@
     <div class="shape"></div>
   </div>
   <div class="form-div">
-    <h3>Wallet App</h3>
+    <h3>Recipe App</h3>
       <form [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">
         
         <mat-form-field class="inputfild" appearance="outline">
           <mat-label>Username</mat-label>
-          <input type="email" autocomplete="off" formControlName="email" matInput placeholder="Email">
+          <input type="text" autocomplete="off" formControlName="username" matInput placeholder="Username">
         </mat-form-field>
 
         <mat-form-field class="inputfild" appearance="outline">
@@ -22,13 +22,6 @@
 
         
       </form>
-
-      <!-- <div *ngIf="showOtpComponent" class="ion-text-center">
-        
-        <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
-
-        <ion-button routerLink="/home" >Log In</ion-button>
-      </div> -->
 
   </div>
 </ion-content>

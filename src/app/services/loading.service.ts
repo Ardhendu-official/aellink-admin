@@ -12,7 +12,6 @@ export class LoadingService {
 
   async dismissLoading() {
     this.loadingCtrl.dismiss().then((res) => {
-      console.log('Loading dismissed!', res);
     }).catch((error) => {
       console.log('error', error);
     });

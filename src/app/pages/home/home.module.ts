@@ -9,7 +9,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HighchartsChartModule } from 'highcharts-angular';
 import {MatIconModule} from '@angular/material/icon'
 import { HomePage } from './home.page';
-import { ShortNumberPipe } from 'src/app/pipes/short-number.pipe';
 
 @NgModule({
   imports: [
@@ -21,6 +20,6 @@ import { ShortNumberPipe } from 'src/app/pipes/short-number.pipe';
     MatCardModule,
     MatIconModule
   ],
-  declarations: [HomePage, ShortNumberPipe]
+  declarations: [HomePage]
 })
 export class HomePageModule {}

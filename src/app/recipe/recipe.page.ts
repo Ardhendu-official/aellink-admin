@@ -4,39 +4,45 @@ import { ApiServices } from 'src/app/services/api.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { finalize } from 'rxjs/operators';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { Recipes } from "src/app/interface/recipe";
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-recipe',
+  templateUrl: './recipe.page.html',
+  styleUrls: ['./recipe.page.scss'],
 })
-export class HomePage implements OnInit {
+export class RecipePage implements OnInit {
 
-  recipes
+  rcp:any = {
+    id: '',
+    name: ''
+  }
+
+  recipe:any
 
   constructor(
     private authenticationService: AuthenticationService,
     public apiservices : ApiServices,
     public http: HttpClient,
+    private route: ActivatedRoute,
     public storage: Storage,
     public loading: LoadingService,
     private router:Router,
-  ) { }
+  ) { 
+    this.route.queryParams.subscribe(params =>{
+      if(this.router.getCurrentNavigation().extras.state){
+        this.rcp.id = this.router.getCurrentNavigation().extras.state.rcp_id;
+        this.rcp.name = this.router.getCurrentNavigation().extras.state.rcp_name;
+      }
+    });
+  }
 
   ngOnInit() {
-    this.fetchdata()
+    this.fetchdata(this.rcp.id)
   }
 
-  refresh(ev) {
-    setTimeout(() => {
-      this.fetchdata()
-    }, 3000);
-  }
-
-  async fetchdata(){
+  async fetchdata(id){
     await this.loading.presentLoading();
 
     let access_token = await this.storage.get('access_token');
@@ -45,27 +51,13 @@ export class HomePage implements OnInit {
         headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `Bearer ${access_token}`})
       };
 
-      this.http.get(`${this.apiservices.api_url}recipe/`,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
+      this.http.get(`${this.apiservices.api_url}recipe/${id}`,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
       .subscribe(async (res) => {
         const response:any =res;
-        this.recipes = response as Recipes;
+        this.recipe = response;
       },(reserror)=>{
         console.log(reserror.error.detail);
       })
-  }
-
-  viewRecipe(id, name){
-    let navigationExtras: NavigationExtras = {
-      state: {
-        rcp_id: id,
-        rcp_name: name
-      }
-    }
-    this.router.navigate(['recipe'], navigationExtras);
-  }
-
-  logout(){
-    this.authenticationService.logout();
   }
 
 }

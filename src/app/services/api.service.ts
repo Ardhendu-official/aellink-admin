@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiServices {
 
-    api_url = 'https://fastapi-savefull.herokuapp.com/';
+    api_url = 'https://recipe-puspendu.herokuapp.com/';
     
     constructor() { }
 

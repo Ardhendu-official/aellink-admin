@@ -1,37 +1,8 @@
-.card{
-    min-width: 10vw;
-    // width: 15vw;
-    height: 200px;
-    border-radius: 15px;
-    box-shadow: none;
-    // background: linear-gradient(to bottom right, #abe1b1, #a0c5a3);
-    margin: 10px;
-    text-align: center;
+h1, h2, h3, p {
+    margin: 0px;
 }
 
-.avater{
-    height: 75px;
-    width: 75px;
-    // background: linear-gradient(to bottom right, #ace0b2, #7dbe83);
-    margin: auto;
-    margin-top: 29px;
-    text-align: center;
-}
-
-.icon{
-    font-size: 35px;   
-    margin-top: 18px;
-}
-
-.dashboard_tile_col_card_label_1{
-    font-size: 25px;
-    font-weight: bold;
-    color: #333333;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-.dashboard_tile_col_card_label_2{
-    font-size: 15px;
-    color: #333333;
+ion-avatar{
+    height: 60px;
+    width: 60px;
 }
