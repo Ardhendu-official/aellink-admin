@@ -1,7 +1,10 @@
 {
-  "name": "OfferLatter",
+  "name": "Recipe",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }

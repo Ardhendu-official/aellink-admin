@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'OfferLatter',
+  appId: 'com.puspendu.recipe',
+  appName: 'Recipe',
   webDir: 'www',
   bundledWebRuntime: false
 };
