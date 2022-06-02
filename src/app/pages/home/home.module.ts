@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 import {MatCardModule} from '@angular/material/card';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { HighchartsChartModule } from 'highcharts-angular';
 import {MatIconModule} from '@angular/material/icon'
 import { HomePage } from './home.page';
 
@@ -16,7 +15,6 @@ import { HomePage } from './home.page';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    HighchartsChartModule,
     MatCardModule,
     MatIconModule
   ],

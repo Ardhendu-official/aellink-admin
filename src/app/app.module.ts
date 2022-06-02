@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicStorageModule } from '@ionic/storage-angular';
-import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +24,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     NgSelectModule, 
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
-    HighchartsChartModule
+    ReactiveFormsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

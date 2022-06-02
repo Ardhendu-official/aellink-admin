@@ -1,10 +1,7 @@
 {
   "name": "Recipe",
   "integrations": {
-    "capacitor": {
-      "enabled": false
-    },
-    "cordova": {}
+    "capacitor": {}
   },
   "type": "angular"
 }
