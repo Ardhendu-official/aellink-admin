@@ -1,14 +1,6 @@
-h1,
-h2,
-h3,
-p {
-    margin: 0px;
-}
-
-ion-avatar {
-    height: 60px;
-    width: 60px;
-}
+// @import '~@swimlane/ngx-datatable/index.css';
+// @import '~@swimlane/ngx-datatable/themes/material.scss';
+// @import '~@swimlane/ngx-datatable/assets/icons.css';
 
 ion-grid {
     --ion-grid-column-padding: 10px;
@@ -16,14 +8,12 @@ ion-grid {
     border-style: hidden;
 
     ion-row:first-child {
-        background-color: #91929c;
-        border-radius: 7px;
+        background-color: #2dd36f;
         font-weight: bold;
     }
 
     ion-col {
         border: 1px solid black;
-        border-radius: 9px;
         border-bottom: 0;
         border-right: 0;
     }

@@ -27,13 +27,15 @@ export class LoginPage implements OnInit {
     public storage: Storage,
     private authService: AuthenticationService,
     public alertsToasts: AlertsToastsService,
+    private menuCtrl: MenuController
   ) {
+    this.menuCtrl.enable(false)
    }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       // tslint:disable-next-line: max-line-length
-      username: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
@@ -63,25 +65,25 @@ export class LoginPage implements OnInit {
       this.loading.presentLoading()
 
       let data = {
-        'username': this.loginForm.value.username,
-        'password': this.loginForm.value.password
+        'admin_email': this.loginForm.value.email,
+        'admin_password': this.loginForm.value.password
       }
 
-      let body = new URLSearchParams();
-      body.set('username', data.username);
-      body.set('password', data.password);
+      // let body = new URLSearchParams();
+      // body.set('email', data.email);
+      // body.set('password', data.password);
 
       let httpOptions = {
-        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+        headers: new HttpHeaders({'Content-Type': 'application/json'})
       };
-      this.http.post(`${this.apiservices.api_url}login/`,body,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
+      this.http.post(`${this.apiservices.api_url}admin/login/`, data ,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
       .subscribe(async (res) => {
         const response:any =res;
+        await this.storage.set('user', data);
+        await this.storage.set('access_token', response?.access_token);
+        this.authService.login(data);
+        this.alertsToasts.signupSuccessToast('Login Successfully','success');
         if(response.access_token){
-          await this.storage.set('user', data);
-          await this.storage.set('access_token', response?.access_token);
-          this.authService.login(data);
-          this.alertsToasts.signupSuccessToast('Login Successfully','success');
         }
         else if(response.Status == 'Failed'){
           await this.storage.set('user', data);

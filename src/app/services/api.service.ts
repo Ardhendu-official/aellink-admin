@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiServices {
 
-    api_url = 'https://recipe-puspendu.herokuapp.com/';
+    api_url = 'http://13.234.52.167:80/';
     
     constructor() { }
 

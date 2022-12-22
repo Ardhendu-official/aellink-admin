@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin">
+    <ion-row>
+      <ion-col size="1">S.No</ion-col>
+      <ion-col size="4.5">Address</ion-col>
+      <ion-col size="2">Id</ion-col>
+      <ion-col size="2">Wallet Name</ion-col>
+      <ion-col size="2.5">Date</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let row of rows; index as i">
+      <ion-col size="1">{{ i + 1 }}</ion-col>
+      <ion-col size="4.5">{{ row?.user_address }}</ion-col>
+      <ion-col size="2">{{ row?.user_hash_id }}</ion-col>
+      <ion-col size="2">{{ row?.user_wallet_name }}</ion-col>
+      <ion-col size="2.5">{{ row?.user_registration_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-item lines="none">
+    <ion-button color="primary" size="small" slot="end" routerLink="/material">
+      Material Design Table
+    </ion-button>
+  </ion-item> -->
+</ion-content>

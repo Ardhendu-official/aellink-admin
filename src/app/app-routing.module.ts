@@ -34,6 +34,11 @@ const routes: Routes = [
     loadChildren: () => import('./recipe/recipe.module').then( m => m.RecipePageModule),
     canActivate: [AuthGuardService]
   },
+  {
+    path: 'wallet',
+    loadChildren: () => import('./pages/wallet/wallet.module').then( m => m.WalletPageModule),
+    canActivate: [AuthGuardService]
+  },
 ];
 
 @NgModule({

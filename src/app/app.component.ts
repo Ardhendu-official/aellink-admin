@@ -12,6 +12,13 @@ import { Router } from '@angular/router';
 export class AppComponent {
   adminInfo:any;
 
+  public appPages = [
+    { title: 'Home', url: '/home', icon: 'home' },
+    { title: 'Wallet', url: '/wallet', icon: 'wallet' },
+  ];
+
+  public labels = ['Family', 'Friends', 'Notes', 'Work'];
+
   constructor(
     public storage: Storage,
     private authenticationService: AuthenticationService,
@@ -21,6 +28,8 @@ export class AppComponent {
   async ngOnInit() {
     await this.storage.create();
     this.initializeApp();
+    let user = await this.storage.get("user")
+    console.log(user)
   }
 
   ionViewWillEnter(){
@@ -29,6 +38,7 @@ export class AppComponent {
 
   async initializeApp() {
     this.adminInfo = await this.storage.get('user');
+    console.log(this.adminInfo)
     this.authenticationService.authState.subscribe(state => {
       if (state) {
         this.router.navigate(['/home']);

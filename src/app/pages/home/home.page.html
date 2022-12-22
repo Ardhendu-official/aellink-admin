@@ -1,5 +1,8 @@
 <ion-header mode="ios">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="logout()" color="danger"><ion-icon name="power"></ion-icon></ion-button>
     </ion-buttons>
@@ -11,18 +14,62 @@
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  
 
-  <ion-list>
-    <!-- <ion-list-header> Recent Conversations </ion-list-header> -->
-    <ion-item (click)="viewRecipe(recipe.rcp_id, recipe.rcp_name)" *ngFor="let recipe of recipes" lines="none">
-        <ion-avatar slot="start">
-          <img [src]=recipe?.rcp_image_url />
-        </ion-avatar>
-        <ion-label>
-          <h2>{{recipe?.rcp_name}} ({{recipe?.user_name}})</h2>
-          <p>{{recipe?.rcp_desc}}</p>
-        </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row class="no-padding">
+      <ion-col>
+        <ion-card style="background-color: rgb(47, 225, 207);">
+          <ion-card-header>
+            <ion-card-title>{{recipes?.total_commission}}</ion-card-title>
+            <ion-card-subtitle>TOTAL COMMISSION</ion-card-subtitle>
+          </ion-card-header>
+        
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{recipes?.total_user}}</ion-card-title>
+            <ion-card-subtitle>TOTAL USER</ion-card-subtitle>
+          </ion-card-header>
+        
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{recipes?.total_send}}</ion-card-title>
+            <ion-card-subtitle>TOTAL SEND</ion-card-subtitle>
+          </ion-card-header>
+        
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{recipes?.total_swapn}}</ion-card-title>
+            <ion-card-subtitle>TOTAL SWAP</ion-card-subtitle>
+          </ion-card-header>
+        
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-margin">
+    <ion-row>
+      <ion-col size="1">S.No</ion-col>
+      <ion-col size="4.5">Address</ion-col>
+      <ion-col size="2">Id</ion-col>
+      <ion-col size="2">Wallet Name</ion-col>
+      <ion-col size="2.5">Date</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let row of rows; index as i">
+      <ion-col size="1">{{ i + 1 }}</ion-col>
+      <ion-col size="4.5">{{ row?.user_address }}</ion-col>
+      <ion-col size="2">{{ row?.user_hash_id }}</ion-col>
+      <ion-col size="2">{{ row?.user_wallet_name }}</ion-col>
+      <ion-col size="2.5">{{ row?.user_registration_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
