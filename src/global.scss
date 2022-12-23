@@ -76,6 +76,7 @@ ion-content{
 // }
 
 
-.ae-modal .modal-wrapper{
-   --width: 90%!important;
- }
+ion-modal.ae-modal::part(content) {
+  height: 80%;
+  width: 90%;
+}

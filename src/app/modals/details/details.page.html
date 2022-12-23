@@ -1,48 +1,125 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>details</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content style="height: auto ;">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card style="background-color: rgb(113, 147, 221);">
-          <ion-card-header>
-            <ion-card-title>{{recipes?.total_commission}}</ion-card-title>
-            <ion-card-subtitle>TOTAL COMMISSION</ion-card-subtitle>
-          </ion-card-header>
-        
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card style="background-color: rgb(146, 197, 226);">
-          <ion-card-header>
-            <ion-card-title>{{recipes?.total_user}}</ion-card-title>
-            <ion-card-subtitle>TOTAL USER</ion-card-subtitle>
-          </ion-card-header>
-        
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card style="background-color: rgb(231, 238, 170);">
-          <ion-card-header>
-            <ion-card-title>{{recipes?.total_send}}</ion-card-title>
-            <ion-card-subtitle>TOTAL SEND</ion-card-subtitle>
-          </ion-card-header>
-        
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card style="background-color: rgb(238, 175, 189);">
-          <ion-card-header>
-            <ion-card-title>{{recipes?.total_swapn}}</ion-card-title>
-            <ion-card-subtitle>TOTAL SWAP</ion-card-subtitle>
-          </ion-card-header>
-        
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-segment (ionChange)="segmentChanged($event)" scrollable [(ngModel)]="segment" [(ngModel)]="segment" value='1'>
+    <ion-segment-button value="1">
+      <ion-label>Sent</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>Recevie</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      <ion-label>Swap</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="4">
+      <ion-label>Portfolio</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segment">
+    <div>
+      <ion-list *ngSwitchCase="1">
+        <ion-grid class="ion-margin">
+          <ion-row>
+            <ion-col size="0.5">#</ion-col>
+            <ion-col size="2.5">Transaction Id</ion-col>
+            <ion-col size="2.5">From Account</ion-col>
+            <ion-col size="2.5">To Account</ion-col>
+            <ion-col size="1">Ammount</ion-col>
+            <ion-col size="1">Status</ion-col>
+            <ion-col size="2">Date</ion-col>
+          </ion-row>
+          <ion-row *ngFor="let row of rows; index as i" style="cursor: pointer;">
+            <ion-col size="0.5">{{ i + 1 }}</ion-col>
+            <ion-col size="2.5"><a target="_blank" href='https://tronscan.org/#/transaction/{{ row?.transaction_tx_id }}'>{{ row?.transaction_tx_id }}</a></ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.owner_address }}</ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.to_address }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_contract?.amount / 1000000 }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_status }}</ion-col>
+            <ion-col size="2">{{ row?.transaction_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list *ngSwitchCase="2">
+        <ion-grid class="ion-margin">
+          <ion-row>
+            <ion-col size="0.5">#</ion-col>
+            <ion-col size="2.5">Transaction Id</ion-col>
+            <ion-col size="2.5">From Account</ion-col>
+            <ion-col size="2.5">To Account</ion-col>
+            <ion-col size="1">Ammount</ion-col>
+            <ion-col size="1">Status</ion-col>
+            <ion-col size="2">Date</ion-col>
+          </ion-row>
+          <ion-row *ngFor="let row of rows; index as i" style="cursor: pointer;">
+            <ion-col size="0.5">{{ i + 1 }}</ion-col>
+            <ion-col size="2.5"><a target="_blank" href='https://tronscan.org/#/transaction/{{ row?.transaction_tx_id }}'>{{ row?.transaction_tx_id }}</a></ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.owner_address }}</ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.to_address }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_contract?.amount / 1000000 }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_status }}</ion-col>
+            <ion-col size="2">{{ row?.transaction_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list *ngSwitchCase="3">
+        <ion-grid class="ion-margin">
+          <ion-row>
+            <ion-col size="0.5">#</ion-col>
+            <ion-col size="2.5">Transaction Id</ion-col>
+            <ion-col size="2.5">From Account</ion-col>
+            <ion-col size="2.5">To Account</ion-col>
+            <ion-col size="1">Ammount</ion-col>
+            <ion-col size="1">Status</ion-col>
+            <ion-col size="2">Date</ion-col>
+          </ion-row>
+          <ion-row *ngFor="let row of rows; index as i" style="cursor: pointer;">
+            <ion-col size="0.5">{{ i + 1 }}</ion-col>
+            <ion-col size="2.5"><a target="_blank" href='https://tronscan.org/#/transaction/{{ row?.transaction_tx_id }}'>{{ row?.transaction_tx_id }}</a></ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.owner_address }}</ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.to_address }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_contract?.amount / 1000000 }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_status }}</ion-col>
+            <ion-col size="2">{{ row?.transaction_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list *ngSwitchCase="4">
+        <ion-grid class="ion-margin">
+          <ion-row>
+            <ion-col size="0.5">#</ion-col>
+            <ion-col size="2.5">Transaction Id</ion-col>
+            <ion-col size="2.5">From Account</ion-col>
+            <ion-col size="2.5">To Account</ion-col>
+            <ion-col size="1">Ammount</ion-col>
+            <ion-col size="1">Status</ion-col>
+            <ion-col size="2">Date</ion-col>
+          </ion-row>
+          <ion-row *ngFor="let row of rows; index as i" style="cursor: pointer;">
+            <ion-col size="0.5">{{ i + 1 }}</ion-col>
+            <ion-col size="2.5"><a target="_blank" href='https://tronscan.org/#/transaction/{{ row?.transaction_tx_id }}'>{{ row?.transaction_tx_id }}</a></ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.owner_address }}</ion-col>
+            <ion-col size="2.5">{{ row?.transaction_contract?.to_address }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_contract?.amount / 1000000 }}</ion-col>
+            <ion-col size="1">{{ row?.transaction_status }}</ion-col>
+            <ion-col size="2">{{ row?.transaction_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </div>
+
+  </div>
 </ion-content>
