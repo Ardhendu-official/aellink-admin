@@ -1,17 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
-import { DetailsPage } from 'src/app/modals/details/details.page';
+import { ModalController } from '@ionic/angular';
 import { ApiServices } from 'src/app/services/api.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { DetailsPage } from 'src/app/modals/details/details.page';
 
 @Component({
-  selector: 'app-wallet',
-  templateUrl: './wallet.page.html',
-  styleUrls: ['./wallet.page.scss'],
+  selector: 'app-swap',
+  templateUrl: './swap.page.html',
+  styleUrls: ['./swap.page.scss'],
 })
-export class WalletPage implements OnInit {
+export class SwapPage implements OnInit {
 
   public rows: any;
   message:any;
@@ -19,23 +19,20 @@ export class WalletPage implements OnInit {
     private http: HttpClient,
     private modalCtrl: ModalController,
     public apiservices : ApiServices,
-    public loading: LoadingService,
-  ) { }
+    public loading: LoadingService,) { }
 
   ngOnInit() {
-
     let httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
     
-    this.http.get(`${this.apiservices.api_url}admin/wallet/list/`,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
+    this.http.get(`${this.apiservices.api_url}swap/all/trans`,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
       .subscribe((res) => {
         console.log(res)
         this.rows = res;
         // this.rows.length = 50
       });
   }
-
 
   async openModal(details) {
     console.log(details)

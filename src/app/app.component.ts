@@ -15,6 +15,9 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Wallet', url: '/wallet', icon: 'wallet' },
+    { title: 'Transction', url: '/trans', icon: 'swap-horizontal' },
+    { title: 'Swap', url: '/swap', icon: 'shuffle' },
+    
   ];
 
   public labels = ['Family', 'Friends', 'Notes', 'Work'];

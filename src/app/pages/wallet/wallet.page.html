@@ -13,7 +13,7 @@
       <ion-col size="2">Wallet Name</ion-col>
       <ion-col size="2.5">Date</ion-col>
     </ion-row>
-    <ion-row *ngFor="let row of rows; index as i">
+    <ion-row *ngFor="let row of rows; index as i" style="cursor: pointer;" (click)="openModal(row)">
       <ion-col size="1">{{ i + 1 }}</ion-col>
       <ion-col size="4.5">{{ row?.user_address }}</ion-col>
       <ion-col size="2">{{ row?.user_hash_id }}</ion-col>

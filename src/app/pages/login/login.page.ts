@@ -81,9 +81,9 @@ export class LoginPage implements OnInit {
         const response:any =res;
         await this.storage.set('user', data);
         await this.storage.set('access_token', response?.access_token);
-        this.authService.login(data);
-        this.alertsToasts.signupSuccessToast('Login Successfully','success');
-        if(response.access_token){
+        if(response.Status == 'Success'){
+          this.authService.login(data);
+          this.alertsToasts.signupSuccessToast('Login Successfully','success');
         }
         else if(response.Status == 'Failed'){
           await this.storage.set('user', data);

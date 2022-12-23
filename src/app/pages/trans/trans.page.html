@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Send Transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin">
+    <ion-row>
+      <ion-col size="0.6">S.No</ion-col>
+      <ion-col size="3.6">From Account</ion-col>
+      <ion-col size="3.6">To Account</ion-col>
+      <ion-col size="1">Amount</ion-col>
+      <ion-col size="1.2">User Id</ion-col>
+      <ion-col size="2">Date</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let row of rows; index as i" style="cursor: pointer;" (click)="openModal(row)">
+      <ion-col size="0.6">{{ i + 1 }}</ion-col>
+      <ion-col size="3.6">{{ row?.trans_from_account }}</ion-col>
+      <ion-col size="3.6">{{ row?.trans_to_account }}</ion-col>
+      <ion-col size="1">{{ row?.transaction_amount }}</ion-col>
+      <ion-col size="1.2">{{ row?.trans_user_id }}</ion-col>
+      <ion-col size="2">{{ row?.transaction_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-item lines="none">
+    <ion-button color="primary" size="small" slot="end" routerLink="/material">
+      Material Design Table
+    </ion-button>
+  </ion-item> -->
+</ion-content>

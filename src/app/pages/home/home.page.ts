@@ -93,4 +93,9 @@ export class HomePage implements OnInit {
     this.authenticationService.logout();
   }
 
+  detail(){
+    console.log("new route");
+    
+  }
+
 }

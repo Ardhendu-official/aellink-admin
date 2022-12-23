@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { WalletPageRoutingModule } from './wallet-routing.module';
 
 import { WalletPage } from './wallet.page';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   imports: [
@@ -15,9 +14,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     FormsModule,
     IonicModule,
     WalletPageRoutingModule,
-    NgxDatatableModule
   ],
   declarations: [WalletPage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class WalletPageModule {}
