@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <div class="form-div">
+    <h3>Ael Link</h3>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" (keyup.enter)="login()">
+        
+        <mat-form-field class="inputfild" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="text" autocomplete="off" formControlName="email" matInput placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field class="inputfild" appearance="outline">
+          <mat-label>Enter your Old password</mat-label>
+          <input formControlName="password" autocomplete="off" matInput [type]="hide ? 'password' : 'text'">
+          <ion-icon style="font-size: 25px;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" name='{{hide ? "eye-off-outline" : "eye-outline"}}'></ion-icon>
+        </mat-form-field>   
+        
+        <mat-form-field class="inputfild" appearance="outline">
+          <mat-label>Enter your New password</mat-label>
+          <input formControlName="password" autocomplete="off" matInput [type]="hide ? 'password' : 'text'">
+          <ion-icon style="font-size: 25px;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" name='{{hide ? "eye-off-outline" : "eye-outline"}}'></ion-icon>
+        </mat-form-field> 
+
+        <mat-form-field class="inputfild" appearance="outline">
+          <mat-label>Re-Enter your New password</mat-label>
+          <input formControlName="password" autocomplete="off" matInput [type]="hide ? 'password' : 'text'">
+          <ion-icon style="font-size: 25px;" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" name='{{hide ? "eye-off-outline" : "eye-outline"}}'></ion-icon>
+        </mat-form-field> 
+
+        <ion-button type="submit">Continue</ion-button>
+
+        
+      </form>
+
+  </div>
+</ion-content>

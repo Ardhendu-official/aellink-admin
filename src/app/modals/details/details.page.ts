@@ -45,7 +45,7 @@ export class DetailsPage implements OnInit {
     }else if(event.target.value === '3'){
       this.three()
     }else if(event.target.value === '4'){
-
+      this.four()
     }
   }
 
@@ -93,4 +93,18 @@ export class DetailsPage implements OnInit {
       });
   }
 
+  four(){
+    this.loading.presentLoading()
+
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    this.http.get(`${this.apiservices.api_url}token/show/${this.value.user_address}`,httpOptions).pipe(finalize(() => this.loading.dismissLoading()))
+      .subscribe((res) => {
+        console.log(res)
+        this.rows = res;
+        // this.rows.length = 50
+      });
+  }
 }

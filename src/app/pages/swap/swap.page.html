@@ -21,7 +21,7 @@
       <ion-col size="1.3">{{ row?.trans_user_id }}</ion-col>
       <ion-col size="1.5">{{ row?.trans_currency_from }}</ion-col>
       <ion-col size="1.5">{{ row?.trans_currency_to }}</ion-col>
-      <ion-col size="1.5">{{ row?.transaction_tx_id }}</ion-col>
+      <ion-col size="1.5"><a target="_blank" href='https://stealthex.io/exchange/?id={{ row?.transaction_tx_id }}'>{{ row?.transaction_tx_id }}</a></ion-col>
       <ion-col size="1.5">{{ row?.transaction_date_time | date: "dd/MM/yyyy : hh.mm aa" }}</ion-col>
     </ion-row>
   </ion-grid>

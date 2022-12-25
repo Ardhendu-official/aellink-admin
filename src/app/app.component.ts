@@ -17,7 +17,7 @@ export class AppComponent {
     { title: 'Wallet', url: '/wallet', icon: 'wallet' },
     { title: 'Transction', url: '/trans', icon: 'swap-horizontal' },
     { title: 'Swap', url: '/swap', icon: 'shuffle' },
-    
+    { title: 'Profile', url: '/admin', icon: 'person-circle' },
   ];
 
   public labels = ['Family', 'Friends', 'Notes', 'Work'];

@@ -54,6 +54,11 @@ const routes: Routes = [
     path: 'swap',
     loadChildren: () => import('./modals/swap/swap.module').then( m => m.SwapPageModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
+  },
+
 
 
 ];

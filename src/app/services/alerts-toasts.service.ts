@@ -198,7 +198,7 @@ export class AlertsToastsService implements OnInit {
 
     async test() {
         const tc = await this.toastCtrl.create({
-            message: `Hi, Ami Puspendu`,
+            message: `Hi, Ami Ardhendu`,
             duration: 3000,
             cssClass: 'toast',
             color: 'dark'
