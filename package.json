@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular-material-components/file-input": "^7.0.1",
     "@angular/animations": "~13.0.0",
